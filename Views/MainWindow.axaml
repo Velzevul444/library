@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:books.ViewModels"
+        x:Class="books.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Width="900"
+        Height="600"
+        Title="Books">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <DockPanel Margin="10">
+
+        <TextBox DockPanel.Dock="Top"
+                 Watermark="Поиск"
+                 Text="{Binding SearchText}"
+                 Margin="0 0 0 10"/>
+
+        <StackPanel DockPanel.Dock="Top"
+                    Orientation="Horizontal"
+                    Spacing="10"
+                    Margin="0 0 0 10">
+
+            <Button Content="Добавить" Command="{Binding AddCommand}"/>
+            <Button Content="Редактировать" Command="{Binding EditCommand}"/>
+            <Button Content="Удалить" Command="{Binding DeleteCommand}"/>
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding Books}"
+                  SelectedItem="{Binding SelectedBook}"
+                  AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="200"/>
+                <DataGridTextColumn Header="Автор" Binding="{Binding Author}" Width="150"/>
+                <DataGridTextColumn Header="Жанр" Binding="{Binding Genre}" Width="150"/>
+                <DataGridTextColumn Header="Год" Binding="{Binding Year}" Width="80"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Count}" Width="100"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </DockPanel>
+
+</Window>

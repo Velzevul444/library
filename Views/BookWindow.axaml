@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:books.ViewModels"
+        x:Class="books.Views.BookWindow"
+        x:DataType="vm:BookWindowViewModel"
+        Width="400"
+        Height="350"
+        Title="Book">
+
+    <Design.DataContext>
+        <vm:BookWindowViewModel />
+    </Design.DataContext>
+
+    <StackPanel Margin="20" Spacing="10">
+
+        <TextBox Watermark="Название" Text="{Binding Title}"/>
+        <TextBox Watermark="Автор" Text="{Binding Author}"/>
+        <TextBox Watermark="Жанр" Text="{Binding Genre}"/>
+        <TextBox Watermark="Год" Text="{Binding Year}"/>
+        <TextBox Watermark="Количество" Text="{Binding Count}"/>
+
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button Content="Сохранить" Command="{Binding SaveCommand}"/>
+            <Button Content="Отмена" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>
